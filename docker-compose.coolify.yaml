@@ -1,0 +1,31 @@
+services:
+  api:
+    container_name: evolution_audio_converter
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - 4040:4040
+    environment:
+      - PORT=4040
+      - CORS_ALLOW_ORIGINS=*
+      - API_KEY=${SERVICE_HEX_32_API}
+      - ENABLE_TRANSCRIPTION=true
+      - TRANSCRIPTION_PROVIDER=${TRANSCRIPTION_PROVIDER}  # or groq
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GROK_API_KEY=${GROQ_API_KEY}
+      - TRANSCRIPTION_LANGUAGE=en  # Default transcription language (optional)
+
+      # S3 Storage Settings
+      - ENABLE_S3_STORAGE=false
+      - S3_ENDPOINT=play.min.io
+      - S3_ACCESS_KEY=your_access_key_here
+      - S3_SECRET_KEY=your_secret_key_here
+      - S3_BUCKET_NAME=audio-files
+      - S3_REGION=us-east-1
+      - S3_USE_SSL=true
+      - S3_URL_EXPIRATION=24h  # Duration format: 1h, 24h, 7d, etc.
+    expose:
+      - 4040
+
