@@ -15,7 +15,7 @@ services:
       - TRANSCRIPTION_PROVIDER=${TRANSCRIPTION_PROVIDER}  # or groq
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - GROK_API_KEY=${GROQ_API_KEY}
-      - TRANSCRIPTION_LANGUAGE=en  # Default transcription language (optional)
+      - TRANSCRIPTION_LANGUAGE=${TRANSCRIPTION_LANGUAGE}  # Default transcription language (optional)
 
       # S3 Storage Settings
       - ENABLE_S3_STORAGE=false
