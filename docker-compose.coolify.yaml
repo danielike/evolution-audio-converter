@@ -5,8 +5,6 @@ services:
       context: .
       dockerfile: ./Dockerfile
     restart: always
-    ports:
-      - 4040:4040
     environment:
       - PORT=4040
       - CORS_ALLOW_ORIGINS=*
